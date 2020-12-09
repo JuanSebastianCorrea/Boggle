@@ -1,0 +1,119 @@
+body {
+	background-color: rgb(248, 181, 105);
+}
+h1 {
+	color: blanchedalmond;
+	background-color: rgb(248, 181, 105);
+	padding: 12px;
+	height: 100px;
+	margin-bottom: 0;
+	text-shadow: -1px -1px 0 rgb(59, 38, 11), 1px -1px 0 rgb(59, 38, 11), -1px 1px 0 rgb(59, 38, 11),
+		1px 1px 0 rgb(59, 38, 11);
+}
+
+.game-col {
+	background-color: rgb(248, 181, 105);
+	height: 420px;
+}
+
+.side-col {
+	background-color: rgb(255, 235, 205);
+	height: 420px;
+}
+
+.timer-container {
+	margin-top: 50px;
+}
+
+.board {
+	border: 1px solid black;
+	width: 280px;
+	height: 280px;
+}
+
+td {
+	background-color: rgb(255, 235, 205);
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	border: 1px solid black;
+	width: 30px;
+	height: 30px;
+}
+
+form {
+	position: relative;
+	top: 25%;
+}
+
+#words-box {
+	height: 360px;
+	border: 1px solid black;
+	border-radius: 4px;
+	margin-bottom: 10px;
+}
+
+.list-group-item {
+	font-size: 12px;
+	padding: 2px 5px;
+}
+
+footer {
+	background-color: rgb(248, 181, 105);
+	height: 100px;
+	padding: 50px;
+}
+
+footer p {
+	position: relative;
+	bottom: 20px;
+}
+
+.hidden {
+	display: none;
+}
+/* .autofocus {
+	
+} */
+@media (max-width: 1050px) {
+	.board {
+		width: 230px;
+		height: 230px;
+	}
+}
+
+@media (max-width: 625px) {
+	.h1 {
+		font-size: 30px;
+	}
+
+	.h2 {
+		font-size: 20px;
+	}
+
+	.h3 {
+		font-size: 20px;
+	}
+
+	.h4 {
+		font-size: 15px;
+	}
+}
+
+@media (max-width: 480px) {
+	.board {
+		width: 170px;
+		height: 170px;
+	}
+
+	.h4 {
+		font-size: 10px;
+	}
+}
+
+@media (max-width: 359px) {
+	.board {
+		width: 130px;
+		height: 130px;
+	}
+}
