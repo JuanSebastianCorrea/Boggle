@@ -7,6 +7,7 @@ $('document').ready(show_timer);
 $('#start-btn').on('click', function() {
 	timer();
 	$('#enter-btn').toggleClass('hidden');
+	$('#word').toggleClass('hidden');
 	$('#word').focus();
 	$('#start-btn').hide();
 });
@@ -65,13 +66,13 @@ function timer() {
 	clearID = setInterval(tick, 1000);
 }
 
-function tick() {
+async function tick() {
 	secs -= 1;
 	show_timer();
 
 	if (secs === 0) {
 		clearInterval(clearID);
-		scoreGame();
+		await scoreGame();
 	}
 }
 
@@ -81,8 +82,10 @@ async function scoreGame() {
 	$('#restart-btn').toggleClass('hidden');
 	const res = await axios.post('/post-score', { score: score });
 	console.log(res);
+
 	if (res.data.brokeRecord) {
 		show_message(`New record: ${score}`);
+		$('#high-score').text(score);
 	} else {
 		show_message(`Final score: ${score}`);
 	}
