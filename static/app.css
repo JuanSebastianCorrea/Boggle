@@ -67,14 +67,15 @@ footer {
 footer p {
 	position: relative;
 	bottom: 20px;
+	color: blanchedalmond;
+	text-shadow: -1px -1px 0 rgb(59, 38, 11), 1px -1px 0 rgb(59, 38, 11), -1px 1px 0 rgb(59, 38, 11),
+		1px 1px 0 rgb(59, 38, 11);
 }
 
 .hidden {
 	display: none;
 }
-/* .autofocus {
-	
-} */
+
 @media (max-width: 1050px) {
 	.board {
 		width: 230px;
