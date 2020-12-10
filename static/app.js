@@ -86,7 +86,13 @@ async function scoreGame() {
 	if (res.data.brokeRecord) {
 		show_message(`New record: ${score}`);
 		$('#high-score').text(score);
+		if (plays === 1) {
+			$('#num-plays').html('<i> (in 1 play) </i>');
+		} else {
+			$('#num-plays').html(`<i> (in ${plays} plays) </i>`);
+		}
 	} else {
 		show_message(`Final score: ${score}`);
+		$('#num-plays').html(`<i> (in ${plays} plays) </i>`);
 	}
 }
