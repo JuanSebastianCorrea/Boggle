@@ -1,6 +1,6 @@
 let score = 0;
 let words = new Set();
-let secs = 25;
+let secs = 85;
 let clearID;
 
 $('document').ready(show_timer);
@@ -30,7 +30,7 @@ async function handleSubmit(evt) {
 	}
 
 	let response = await axios.get('/check-word', { params: { word: word } });
-	console.log(response);
+	// console.log(response);
 
 	if (response.data.result === 'not-on-board') {
 		show_message(`${word} is not a word on this board`);
