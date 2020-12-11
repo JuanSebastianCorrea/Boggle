@@ -1,6 +1,6 @@
 from unittest import TestCase
 from app import app
-from flask import session
+from flask import session, json
 from boggle import Boggle
 
 
@@ -59,9 +59,10 @@ class FlaskTests(TestCase):
             self.assertEqual(response.json['result'], 'not-word')
 
 
-    # def test_post_score(self):
-    #     with app.test_client() as client:
+    def test_post_score(self):
+        with app.test_client() as client:
             
-    #         response = client.post('/post-score', data={'score': 20})
-    #         import pdb; pdb.set_trace()
+            response = client.post('/post-score', data={'score': 20})
+            import pdb; pdb.set_trace()
+            
         

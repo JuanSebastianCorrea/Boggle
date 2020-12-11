@@ -1,6 +1,6 @@
 let score = 0;
 let words = new Set();
-let secs = 85;
+let secs = 15;
 let clearID;
 
 $('document').ready(show_timer);

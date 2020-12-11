@@ -1,8 +1,8 @@
-from flask import Flask, request, jsonify, render_template, session
+from flask import Flask, request, jsonify, render_template, session, send_from_directory
 from flask_debugtoolbar import DebugToolbarExtension
 from boggle import Boggle
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 app.config['SECRET_KEY'] = "secret"
 # app.debug = True
 # app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
@@ -13,6 +13,9 @@ app.config['SECRET_KEY'] = "secret"
 
 boggle_game = Boggle()
 
+@app.route('/words.txt')
+def static_from_root():
+    return send_from_directory(app.static_folder, request.path[1:])
 
 @app.route('/')
 def display_board():
