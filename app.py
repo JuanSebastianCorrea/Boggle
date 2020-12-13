@@ -1,21 +1,14 @@
-from flask import Flask, request, jsonify, render_template, session, send_from_directory
-from flask_debugtoolbar import DebugToolbarExtension
+from flask import Flask, request, jsonify, render_template, session
 from boggle import Boggle
 
-app = Flask(__name__, static_folder='static')
+app = Flask(__name__)
 app.config['SECRET_KEY'] = "secret"
-# app.debug = True
-# app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 
-# debug = DebugToolbarExtension(app)
 
 
 
 boggle_game = Boggle()
 
-@app.route('/words.txt')
-def static_from_root():
-    return send_from_directory(app.static_folder, request.path[1:])
 
 @app.route('/')
 def display_board():
@@ -45,7 +38,7 @@ def check_word():
 def post_score():
     """Receive score, update nplays, update high score if appropriate."""
     score = request.json['score']
-    # import pdb; pdb.set_trace()
+    
     high_score = session.get('high_score', 0)
     n_plays = session.get('n_plays', 0)
 

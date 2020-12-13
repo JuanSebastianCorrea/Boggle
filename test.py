@@ -1,6 +1,6 @@
 from unittest import TestCase
 from app import app
-from flask import session, json
+from flask import session
 from boggle import Boggle
 
 
@@ -15,7 +15,7 @@ class FlaskTests(TestCase):
 
     def test_homepage(self):
          with app.test_client() as client:
-            #  import pdb; pdb.set_trace()
+           
             response =  client.get('/')
             html = response.get_data(as_text=True)
 
@@ -61,8 +61,13 @@ class FlaskTests(TestCase):
 
     def test_post_score(self):
         with app.test_client() as client:
+            with client.session_transaction() as sesh:
+                sesh['n_plays'] = 3
+                sesh['high_score'] = 10
+            response = client.post('/post-score', json={"score": 20})
             
-            response = client.post('/post-score', data={'score': 20})
-            import pdb; pdb.set_trace()
-            
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(session['n_plays'], 4)
+            self.assertTrue(response.json['brokeRecord'])
+
         
