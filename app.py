@@ -37,7 +37,7 @@ def check_word():
 @app.route('/post-score', methods=['POST'])
 def post_score():
     """Receive score, update nplays, update high score if appropriate."""
-    import pdb; pdb.set_trace()
+    
     score = request.json['score']
     
     high_score = session.get('high_score', 0)
