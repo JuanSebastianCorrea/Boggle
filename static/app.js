@@ -1,6 +1,6 @@
 let score = 0;
 let words = new Set();
-let secs = 35;
+let secs = 60;
 let clearID;
 
 $('document').ready(show_timer);
@@ -20,12 +20,14 @@ $('#restart-btn').on('click', function() {
 async function handleSubmit(evt) {
 	evt.preventDefault();
 	let $word = $('#word');
-	let word = $word.val();
+
+	let word = $word.val().toLowerCase();
 
 	if (!word) return;
 
 	if (words.has(word)) {
 		show_message(`${word} was already found!`);
+		$word.val('');
 		return;
 	}
 
@@ -80,7 +82,6 @@ async function scoreGame() {
 	$('#start-btn').hide();
 	$('#restart-btn').toggleClass('hidden');
 	const res = await axios.post('/post-score', { score: score });
-	console.log(res);
 
 	if (res.data.brokeRecord) {
 		show_message(`New record: ${score}`);
